@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         AWS_REGION = 'us-east-1'
-        ECR_REPO = 'rag-medical'
+        ECR_REPO = 'rag-mdeical'
         IMAGE_TAG = 'latest'
         SERVICE_NAME = 'llmops-medical-service'
     }
