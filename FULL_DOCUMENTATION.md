@@ -193,7 +193,7 @@ git push origin main
 ### 1. Install Trivy in Jenkins Container
 
 ```bash
-docker exec -u root -it jenkins-dind bash
+docker exec -u root -it jenkins-dind-ankit bash
 apt install -y
 curl -LO https://github.com/aquasecurity/trivy/releases/download/v0.62.1/trivy_0.62.1_Linux-64bit.deb
 dpkg -i trivy_0.62.1_Linux-64bit.deb
@@ -204,7 +204,7 @@ exit
 Then restart the container:
 
 ```bash
-docker restart jenkins-dind
+docker restart jenkins-dind-ankit
 ```
 
 ---
@@ -218,7 +218,7 @@ docker restart jenkins-dind
 - Restart the Jenkins container:
 
 ```bash
-docker restart jenkins-dind
+docker restart jenkins-dind-ankit
 ```
 
 ---
