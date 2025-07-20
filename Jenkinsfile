@@ -7,14 +7,17 @@ pipeline {
         IMAGE_TAG = 'latest'
         SERVICE_NAME = 'llmops-medical-service'
     }
+//aws apprunner describe-service --service-arn arn:aws:apprunner:us-east-1:123456789012:service/my-service/abcdef123456
 
     stages {
         stage('Clone GitHub Repo') {
             steps {
                 script {
                     echo 'Cloning GitHub repo to Jenkins...'
-                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/itforankit/Medical_chatbot.git']])
+                   // checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/itforankit/Medical_chatbot.git']])
                    // checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/data-guru0/RAG-MEDICAL-CHATBOT.git']])
+                   //checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/itforankit/Medical_chatbot.git']])
+                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/itforankit/Medical_chatbot.git']])
                 }
             }
         }
@@ -57,6 +60,8 @@ pipeline {
 
                         aws apprunner start-deployment --service-arn \$SERVICE_ARN --region ${AWS_REGION}
                         """
+                        //aws apprunner describe-service --service-arn arn:aws:apprunner:us-east-1:123456789012:service/my-service/abcdef123456
+                        
                     }
                 }
             }

@@ -45,20 +45,20 @@ cd custom_jenkins
 Make sure **Docker Desktop is running in the background**, then build the image:
 
 ```bash
-docker build -t jenkins-dind .
+docker build -t jenkins-dind-ankit .
 ```
 
 ### 3. Run Jenkins Container
 
 ```bash
 docker run -d ^
-  --name jenkins-dind ^
+  --name jenkins-dind-ankit ^
   --privileged ^
   -p 8080:8080 ^
   -p 50000:50000 ^
   -v /var/run/docker.sock:/var/run/docker.sock ^
   -v jenkins_home:/var/jenkins_home ^
-  jenkins-dind
+  jenkins-dind-ankit
 ```
 
 > ✅ If successful, you’ll get a long alphanumeric container ID
@@ -67,13 +67,14 @@ docker run -d ^
 
 ```bash
 docker ps
-docker logs jenkins-dind
+docker logs jenkins-dind-ankit
 ```
+f43035b46485496088d008903234d4fd
 
 If the password isn’t visible, run:
 
 ```bash
-docker exec jenkins-dind cat /var/jenkins_home/secrets/initialAdminPassword
+docker exec jenkins-dind-ankit cat /var/jenkins_home/secrets/initialAdminPassword
 ```
 
 ### 5. Access Jenkins Dashboard
@@ -85,7 +86,7 @@ docker exec jenkins-dind cat /var/jenkins_home/secrets/initialAdminPassword
 Back in the terminal:
 
 ```bash
-docker exec -u root -it jenkins-dind bash
+docker exec -u root -it jenkins-dind-ankit bash
 apt update -y
 apt install -y python3
 python3 --version
@@ -98,7 +99,7 @@ exit
 ### 7. Restart Jenkins Container
 
 ```bash
-docker restart jenkins-dind
+docker restart jenkins-dind-ankit
 ```
 
 ### 8. Go to Jenkins Dashboard and Sign In Again
