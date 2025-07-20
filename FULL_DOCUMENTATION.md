@@ -247,7 +247,7 @@ docker restart jenkins-dind-ankit
 ### 5. Install AWS CLI Inside Jenkins Container
 
 ```bash
-docker exec -u root -it jenkins-dind bash
+docker exec -u root -it jenkins-dind-ankit bash
 apt update
 apt install -y unzip curl
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -279,7 +279,7 @@ exit
 If you encounter Docker socket permission issues, fix with:
 
 ```bash
-docker exec -u root -it jenkins-dind bash
+docker exec -u root -it jenkins-dind-ankit bash
 chown root:docker /var/run/docker.sock
 chmod 660 /var/run/docker.sock
 getent group docker
@@ -287,7 +287,7 @@ getent group docker
 usermod -aG docker jenkins
 exit
 
-docker restart jenkins-dind
+docker restart jenkins-dind-ankit
 ```
 
 Then open **Jenkins Dashboard** again to continue.
